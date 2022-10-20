@@ -69,6 +69,7 @@ struct Displaystate
 
 // Constructor / initiator
 struct Displaystate *rgb_lcd(void);
+void rgb_init(struct Displaystate *disp);
 
 void begin(struct Displaystate *disp, uint32_t cols, uint32_t rows);
 

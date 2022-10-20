@@ -11,16 +11,22 @@
 // predeclaration for setReg
 void setReg(struct Displaystate *disp, unsigned char reg, unsigned char dat);
 
-// Construct a displaystate struct
-struct Displaystate *rgb_lcd(void)
+// Initialize an externally reserved struct
+void rgb_init(struct Displaystate *disp)
 {
-    struct Displaystate *disp = malloc(sizeof(struct Displaystate));
     disp->_displayfunction = 0;
     disp->_displaycontrol = 0;
     disp->_displaymode = 0;
     disp->_initialized = 0;
     disp->_numlines = 0;
     disp->_currline = 0;
+}
+
+// Construct a displaystate struct reserving struct from heap
+struct Displaystate *rgb_lcd(void)
+{
+    struct Displaystate *disp = malloc(sizeof(struct Displaystate));
+    rgb_init(dips);
     return disp;
 }
 
