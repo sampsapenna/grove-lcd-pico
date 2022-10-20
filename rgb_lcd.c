@@ -26,7 +26,7 @@ void rgb_init(struct Displaystate *disp)
 struct Displaystate *rgb_lcd(void)
 {
     struct Displaystate *disp = malloc(sizeof(struct Displaystate));
-    rgb_init(dips);
+    rgb_init(disp);
     return disp;
 }
 
