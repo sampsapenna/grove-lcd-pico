@@ -1,11 +1,13 @@
 # Grove LCD backlight module library – Raspberry Pico SDK port
 This is a library for driving the Grove LCD backlight, ported from the Arduino
-library provided by Seed Studio. The library works by same logic, but is
+library provided by Seeed Studio. The library works by same logic, but is
 re-written to use Pico SDK's i2c library instead of `Wire.h`, and using C
 instead of C++.
 
-The original library can be found [in seed studio github](https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight).
+The original library can be found [in Seeed Studio github](https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight).
 All additions are provided under the original license.
+
+An example pico program is provided in [grove-lcd-pico-example repository.](https://github.com/sampsapenna/grove-lcd-pico-example)
 
 ## Usage
 The port can be easily integrated into a Pico SDK project as a git submodule.
