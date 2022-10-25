@@ -76,7 +76,7 @@ void begin(struct Displaystate *disp, uint32_t cols, uint32_t rows)
     // check rgb chip model
     int32_t ret;
     uint8_t rxdata;
-    ret = i2c_read_blocking(i2c_default, RGB_ADDRESS_V5, &rxdata, 1, false);
+    ret = i2c_read_blocking(GROVE_I2C_INST, RGB_ADDRESS_V5, &rxdata, 1, false);
     if (ret > 0)
     {
         disp->rgb_chip_addr = RGB_ADDRESS_V5;
@@ -118,7 +118,7 @@ void setCursor(struct Displaystate *disp, uint8_t col, uint8_t row)
     col = (row == 0 ? col | 0x80 : col | 0xc0);
     uint8_t dta[2] = {0x80, col};
 
-    i2c_write_blocking(i2c_default, LCD_ADDRESS, &dta, 2, false);
+    i2c_write_blocking(GROVE_I2C_INST, LCD_ADDRESS, &dta, 2, false);
 }
 
 // Turn the display on/off (quickly)
@@ -211,7 +211,7 @@ void createChar(struct Displaystate *disp, uint8_t location, uint8_t charmap[])
     {
         dta[i + 1] = charmap[i];
     }
-    i2c_write_blocking(i2c_default, LCD_ADDRESS, &dta, 9, false);
+    i2c_write_blocking(GROVE_I2C_INST, LCD_ADDRESS, &dta, 9, false);
 }
 
 // Control the backlight LED blinking
@@ -254,21 +254,21 @@ void noBlinkLED(struct Displaystate *disp)
 void command(struct Displaystate *disp, uint8_t value)
 {
     uint8_t dta[2] = {0x80, value};
-    i2c_write_blocking(i2c_default, LCD_ADDRESS, &dta, 2, false);
+    i2c_write_blocking(GROVE_I2C_INST, LCD_ADDRESS, &dta, 2, false);
 }
 
 // send data
 size_t write(struct Displaystate *disp, uint8_t value)
 {
     uint8_t dta[2] = {0x40, value};
-    i2c_write_blocking(i2c_default, LCD_ADDRESS, &dta, 2, false);
+    i2c_write_blocking(GROVE_I2C_INST, LCD_ADDRESS, &dta, 2, false);
     return 1; // assume success
 }
 
 void setReg(struct Displaystate *disp, uint8_t reg, uint8_t dat)
 {
     uint8_t dta[2] = {reg, dat};
-    i2c_write_blocking(i2c_default, disp->rgb_chip_addr, &dta, 2, false);
+    i2c_write_blocking(GROVE_I2C_INST, disp->rgb_chip_addr, &dta, 2, false);
 }
 
 void setRGB(struct Displaystate *disp, uint8_t r, uint8_t g, uint8_t b)

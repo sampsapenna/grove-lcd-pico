@@ -3,6 +3,13 @@
 
 #include <inttypes.h>
 
+// i2c to use in Raspberry Pi Pico
+#ifdef GROVE_PICO_SHIELD
+#define GROVE_I2C_INST &i2c1_inst
+#else
+#define GROVE_I2C_INST &i2c0_inst
+#endif
+
 // Device I2C Arress
 #define LCD_ADDRESS (0x7c >> 1)
 #define RGB_ADDRESS (0xc4 >> 1)
