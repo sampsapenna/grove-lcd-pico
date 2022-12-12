@@ -63,7 +63,7 @@
 #define LCD_5x10DOTS 0x04
 #define LCD_5x8DOTS 0x00
 
-struct Displaystate
+typedef struct Displaystate
 {
     uint32_t rgb_chip_addr;
     uint32_t _displayfunction;
@@ -72,7 +72,7 @@ struct Displaystate
     uint32_t _initialized;
     uint32_t _numlines;
     uint32_t _currline;
-};
+} Displaystate;
 
 // Constructor / initiator
 struct Displaystate *rgb_lcd(void);
