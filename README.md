@@ -45,6 +45,12 @@ Library defaults to using `i2c0_inst`, which is fine for most purposes. Some
 shields only expose `i2c0_inst`, so this parameter is made configurable via
 `GROVE_PICO_SHIELD` flag on compile-time.
 
+Some functions, especially the high level ones, use `sleep_ms` function for timing.
+As such, these funcions should only be used outside time-critical code, e.g. in
+a `setup()` function, since they can mess up the timing of other unrelated code
+in the program. For implementation details, inspect `rgb_lcd.c` for which funcions
+use `sleep_ms` for timing.
+
 ## Bugs
 The library has been tested with the grove blue/white display, but not the
 RGB library. This means there might be bugs. Additionally, the drawing logic
