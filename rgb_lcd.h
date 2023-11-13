@@ -83,7 +83,7 @@ typedef struct Displaystate
 // Initialize an externally reserved display struct.
 struct Displaystate *rgb_lcd(void);
 // Create an initialize the display state.
-void rgb_lcd_init(struct Displaystate *disp);
+void lcd_init(struct Displaystate *disp);
 
 /**********************/
 /* Control functions. */
