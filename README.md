@@ -41,10 +41,14 @@ can look e.g. like this:
 ```
 Header file to include is `rgb_lcd.h`, same as in the Arduino library.
 
+Library defaults to using `i2c0_inst`, which is fine for most purposes. Some
+shields only expose `i2c0_inst`, so this parameter is made configurable via
+`GROVE_PICO_SHIELD` flag on compile-time.
+
 ## Bugs
 The library has been tested with the grove blue/white display, but not the
 RGB library. This means there might be bugs. Additionally, the drawing logic
-could be improved, `write()` function currently drawing a single character
+could be improved, `lcd_write()` function currently drawing a single character
 at a time.
 
 If you encounter a bug, go ahead and open an issue.
